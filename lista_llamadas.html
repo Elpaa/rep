@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <h1>Lista de Llamadas</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Fecha y Hora de Llamada</th>
+        <th>Origen de Llamada</th>
+        <th>Tipo de Llamada</th>
+        <th>Atendida</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for llamada in llamadas %}
+        <tr>
+          <td>{{ llamada.id }}</td>
+          <td>{{ llamada.paciente.nombre }}</td>
+          <td>{{ llamada.fecha_hora_llamada }}</td>
+          <td>{{ llamada.origen_llamada }}</td>
+          <td>{{ llamada.tipo_llamada }}</td>
+          <td>{% if llamada.atendida %}Sí{% else %}No{% endif %}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No hay llamadas registradas.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

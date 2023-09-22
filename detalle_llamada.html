@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <h1>Detalles de la Llamada</h1>
+  <dl class="row">
+    <dt class="col-sm-3">ID:</dt>
+    <dd class="col-sm-9">{{ llamada.id }}</dd>
+
+    <dt class="col-sm-3">Paciente:</dt>
+    <dd class="col-sm-9">{{ llamada.paciente.nombre }}</dd>
+
+    <dt class="col-sm-3">Fecha y Hora de Llamada:</dt>
+    <dd class="col-sm-9">{{ llamada.fecha_hora_llamada }}</dd>
+
+    <dt class="col-sm-3">Origen de Llamada:</dt>
+    <dd class="col-sm-9">{{ llamada.origen_llamada }}</dd>
+
+    <dt class="col-sm-3">Tipo de Llamada:</dt>
+    <dd class="col-sm-9">{{ llamada.tipo_llamada }}</dd>
+
+    <dt class="col-sm-3">Atendida:</dt>
+    <dd class="col-sm-9">{% if llamada.atendida %}Sí{% else %}No{% endif %}</dd>
+  </dl>
+  <a href="{% url 'lista_llamadas' %}">Volver a la lista de llamadas</a>
+{% endblock %}

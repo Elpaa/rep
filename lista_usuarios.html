@@ -1,0 +1,31 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+  <h1>Lista de Usuarios</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre de Usuario</th>
+        <th>Tipo de Usuario</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+        <tr>
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.user.username }}</td>
+          <td>{{ usuario.tipo }}</td>
+          <td>
+            <a href="{% url 'detalle_usuario' usuario.id %}" class="btn btn-info">Detalles</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No hay usuarios registrados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
